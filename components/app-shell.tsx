@@ -88,14 +88,15 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                     .map((item) => (
                       <SidebarMenuItem key={item.href}>
                         <SidebarMenuButton
-                          isActive={pathname === item.href}
-                          tooltip={item.label}
-                          render={<Link href={item.href} />}
-                          nativeButton={false}
-                        >
-                          <item.icon />
-                          <span>{item.label}</span>
-                        </SidebarMenuButton>
+  isActive={pathname === item.href}
+  tooltip={item.label}
+  asChild
+>
+  <Link href={item.href}>
+    <item.icon />
+    <span>{item.label}</span>
+  </Link>
+</SidebarMenuButton>
                         {counts[item.href] ? <SidebarMenuBadge>{counts[item.href]}</SidebarMenuBadge> : null}
                       </SidebarMenuItem>
                     ))}
